@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:local="clr-namespace:HSVRange" 
+    xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" 
+    x:Class="HSVRange.HSVRangePage"
+    BackgroundColor="White">
+    <AbsoluteLayout>
+    	<skia:SKCanvasView x:Name="canvasView" 
+            PaintSurface="Handle_PaintSurface"
+            AbsoluteLayout.LayoutFlags="All"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            BackgroundColor="Transparent">
+            <skia:SKCanvasView.GestureRecognizers>
+                <TapGestureRecognizer
+                    Tapped="Handle_Tapped"/>
+            </skia:SKCanvasView.GestureRecognizers>
+        </skia:SKCanvasView>
+        <AbsoluteLayout x:Name="toolBarAbsoluteLayout"
+            AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+            AbsoluteLayout.LayoutBounds="0.5,1,1,AutoSize"
+            BackgroundColor="#33000000">
+            <StackLayout x:Name="toolbarStackLayout"
+                AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+                AbsoluteLayout.LayoutBounds="0.5,1,0.5,AutoSize"
+                Margin="8"
+                Padding="8">
+                <!--<StackLayout
+                    Orientation="Horizontal">
+                    <Label
+                        Text="HSL or HSV?"
+                        VerticalOptions="Center"/>
+                    <Switch 
+                        Toggled="Handle_Toggled"
+                        IsToggled="true"
+                        VerticalOptions="Center"/>
+                </StackLayout>-->
+                <Slider x:Name="innerRandeAngleSlider"
+                    ValueChanged="InnerRandeAngleSlider_ValueChanged"
+                    Minimum="0"/>
+                <Slider x:Name="outterRandeAngleSlider"
+                    ValueChanged="OutterRandeAngleSlider_ValueChanged"
+                    Minimum="0"/>
+                <Slider x:Name="stepsSlider"
+                    Maximum="20"
+                    Minimum="7"
+                    ValueChanged="StepsSlider_ValueChanged"/>
+            </StackLayout>
+        </AbsoluteLayout>
+    </AbsoluteLayout>
+</ContentPage>
